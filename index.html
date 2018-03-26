@@ -1,22 +1,56 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
     <meta charset="utf-8">
     <title>Friend Mapper</title>
-    <link rel="stylesheet" href="master.scss">
-    <style>
-      #map {
-        height: 600px;
-      }
-    </style>
+    <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="master.css">
     <script
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBiILc-LjSfgJoTbUQJ4Y3A9Ge6MjgFNYI&libraries=visualization">
     </script>
   </head>
   <body>
-
+    <nav>
+      <div id="left-nav">
+        <h1>Dangerous</h1>
+        <h1> NYC</h1>
+      </div>
+    </nav>
     <div id="map"></div>
+    <form id="filter-form" onChange="updateMap()">
+      <div id="form-container">
+        <label>Filter data</label>
+        <br />
+        <br />
+        <label>Start Time</label>
+        <br />
+        <input type="time" value="00:00" id="s_time">
+        <br />
+        <label>End Time</label>
+        <br />
+        <input type="time" value="23:59" id="e_time">
+        <br />
+        <label>Start Date</label>
+        <br />
+        <input type="date" min="2017-03-01" max="2018-03-01" value="2017-03-01" id="s_date"></input>
+        <br />
+        <label>End Date</label>
+        <br />
+        <input type="date" min="2017-03-01" max="2018-03-01" value="2018-03-01" id="e_date"></input>
+        <br />
+        <br />
+        <label>Severity Filter</label>
+        <select name="filter" id="filter-input">
+          <option value="all">All</option>
+          <option value="ped">Pedestrian</option>
+          <option value="cyc">Cyclist</option>
+          <option value="mot">Motorist</option>
+        </select>
+      </div>
+    </form>
 
     <script type="text/javascript" src="./dist/bundle.js"></script>
 

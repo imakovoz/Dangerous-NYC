@@ -6,7 +6,15 @@ const DEFAULT = {
   filter: 'all',
 };
 
-export function getDataPoints(opts = DEFAULT) {
+export function getDataPoints(opts = {}) {
+  if (opts.filter) {
+    opts.s_time = convertTime(opts.s_time);
+    opts.e_time = convertTime(opts.e_time);
+    opts.s_date = convertDate(opts.s_date);
+    opts.e_date = convertDate(opts.e_date);
+  }
+  console.log(opts);
+  opts = Object.assign(DEFAULT, opts);
   let data = null;
   $.ajax({
     url: 'NYCMVC.json',
@@ -29,31 +37,6 @@ export function getDataPoints(opts = DEFAULT) {
     },
   });
   return data;
-  //
-  // $.getJSON('NYCMVC.json', function(json) {
-  //   data = json.features.reduce((result, el) => {
-  //     if (filter(el.properties, opts)) {
-  // x = {
-  //   location: new google.maps.LatLng(
-  //     el.geometry.coordinates[0],
-  //     el.geometry.coordinates[1]
-  //   ),
-  //   weight: severityScore(el.properties, opts.filter),
-  // };
-  // console.log(x);
-  //
-  //       result.push({
-  //         location: new google.maps.LatLng(
-  //           el.geometry.coordinates[0],
-  //           el.geometry.coordinates[1]
-  //         ),
-  //         weight: severityScore(el.properties, opts.filter),
-  //       });
-  //
-  //       return result;
-  //     }
-  //   }, []);
-  // });
 }
 
 function filter(obj, filter) {

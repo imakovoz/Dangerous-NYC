@@ -1,0 +1,95 @@
+body {
+  position: relative;
+  margin: 0;
+  height: 100vh;
+}
+
+nav {
+  height: 50px;
+  background-color: #3263a8;
+  display: flex;
+  align-items: center;
+}
+
+#left-nav {
+  display: flex;
+  flex-direction: row;
+}
+
+#left-nav h1:first-child {
+  margin-left: 20px;
+  font-size: 24px;
+  font-weight: 700;
+  color: #ba7821;
+}
+
+#left-nav h1:last-child {
+  margin-left: 8px;
+  font-size: 24px;
+  font-weight: 700;
+  color: white;
+}
+
+#profile {
+  display: none;
+}
+
+#heading {
+  display: block;
+}
+
+#container {
+  display: flex;
+  flex-direction: row;
+}
+
+#container > * {
+  display: inline-block;
+}
+
+#details {
+  background-color: white;
+}
+
+#details * {
+  font-size: 16px;
+  color: red;
+}
+
+#map {
+  height: calc(100vh - 50px);
+}
+
+#filter-form {
+  height: 300px;
+  width: 200px;
+  background-color: rgb(19, 49, 96, 0.6);
+  position: fixed;
+  top: 120px;
+  left: 20px;
+  border-radius: 10px;
+}
+
+#filter-form * {
+  margin: 5px 0;
+}
+
+#filter-form label {
+  color: white;
+  margin-left: 10px;
+}
+
+#filter-form input {
+  border-radius: 5px;
+}
+
+#filter-form label:first-child {
+  text-align: center;
+  margin-left: calc(50% - 47px);
+  font-size: 18px;
+  line-height: 24px;
+}
+
+#form-container {
+  margin-left: 20px;
+}

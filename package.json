@@ -23,7 +23,9 @@
     "babel-preset-env": "^1.6.1",
     "webpack": "^4.2.0",
     "webpack-dev-server": "",
-    "papaparse": ""
+    "papaparse": "",
+    "elessar": "",
+    "dateformat": ""
   },
   "devDependencies": {
     "webpack-cli": "^2.0.12"
