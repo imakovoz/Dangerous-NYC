@@ -71,10 +71,10 @@
 /************************************************************************/
 /******/ ({
 
-/***/ "./create_map.js":
-/*!***********************!*\
-  !*** ./create_map.js ***!
-  \***********************/
+/***/ "./lib/create_map.js":
+/*!***************************!*\
+  !*** ./lib/create_map.js ***!
+  \***************************/
 /*! exports provided: createMap */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -105,10 +105,10 @@ function createMap(data) {
 
 /***/ }),
 
-/***/ "./extractor.js":
-/*!**********************!*\
-  !*** ./extractor.js ***!
-  \**********************/
+/***/ "./lib/extractor.js":
+/*!**************************!*\
+  !*** ./lib/extractor.js ***!
+  \**************************/
 /*! exports provided: getDataPoints */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -204,17 +204,73 @@ function convertDate(date) {
 
 /***/ }),
 
-/***/ "./form.js":
-/*!*****************!*\
-  !*** ./form.js ***!
-  \*****************/
-/*! exports provided: style */
+/***/ "./lib/info.js":
+/*!*********************!*\
+  !*** ./lib/info.js ***!
+  \*********************/
+/*! exports provided: info */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "style", function() { return style; });
-function style() {}
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "info", function() { return info; });
+function info() {
+  $('#nav-wrapper').append('<img src="info_icon.png" id="info-icon"/>');
+  $('#info-icon').click(() => {
+    $('body').prepend(`<div id="info-modal">${information}</div>`);
+    $('#info').prepend(`<h1 id="info-header">Dangerous NYC</h1>`);
+    $('#info').append(`<h3 id="info-header">By: Ilya Makovoz</h3>`);
+    $('#info').append(
+      `<div id="info-desc">  The purpose of this app is to help visualize NYC crash data as made available by Open NYC. This app utilizes Google Maps API and the Heatmap visualization library they provide. This is primarily due to rendering constraints surrounding the 40,000+ datapoints used that prevent efficient rendering utilizing the canvas and D3 library.</div>`
+    );
+    $('#info').append(
+      `<div id="info-desc">  To help determine the most relevant information a few filters have been provided:</div>`
+    );
+    $('#info').append(`<ul id="info-filters"></ul>`);
+    $('#info-filters').append(
+      `<li id="filter-desc">Start Time: lower bound of time across all days for data displayed</li>`
+    );
+    $('#info-filters').append(
+      `<li id="filter-desc">End Time: higher bound of time across all days for data displayed</li>`
+    );
+    $('#info-filters').append(
+      `<li id="filter-desc">Start Date: lower bound for date of data displayed</li>`
+    );
+    $('#info-filters').append(
+      `<li id="filter-desc">End Time: higher bound for date of data displayed</li>`
+    );
+    $('#info-filters').append(
+      `<li id="filter-desc">Severity Filter: allows limiting of data to only calculate pedestrian, cyclist, and motorist injuries</li>`
+    );
+    $('#info').append(
+      `<div id="exit">{Press anywhere on the screen to close}</div>`
+    );
+    $('#info').append(`<div id="info-contact"></div>`);
+    $('#info-contact').append(
+      `<a href="https://github.com/imakovoz" target="_blank"><img src="https://image.flaticon.com/icons/svg/25/25231.svg" id="social-icon" /></a>`
+    );
+    $('#info-contact').append(
+      `<a href="https://www.linkedin.com/in/imakovoz/" target="_blank"><img src="https://png.icons8.com/metro/1600/linkedin.png" id="social-icon" /></a>`
+    );
+    $('#info-contact').append(
+      `<a href="https://imakovoz.github.io/" target="_blank"><img src="https://cdn4.iconfinder.com/data/icons/rounded-white-basic-ui/139/Profile01-RoundedWhite-512.png" id="social-icon" /></a>`
+    );
+    $('#info-modal').click(() => {
+      console.log('test');
+      $('#info-modal').remove();
+    });
+  });
+  $('#info-icon').hover(
+    () => {
+      $('#info-icon').attr('src', 'info_icon1.png');
+    },
+    () => {
+      $('#info-icon').attr('src', 'info_icon.png');
+    }
+  );
+}
+
+const information = '<div id="info" />';
 
 
 /***/ }),
@@ -229,9 +285,9 @@ function style() {}
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var d3__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! d3 */ "./node_modules/d3/index.js");
-/* harmony import */ var _create_map__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./create_map */ "./create_map.js");
-/* harmony import */ var _extractor__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./extractor */ "./extractor.js");
-/* harmony import */ var _form__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./form */ "./form.js");
+/* harmony import */ var _lib_create_map__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./lib/create_map */ "./lib/create_map.js");
+/* harmony import */ var _lib_extractor__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./lib/extractor */ "./lib/extractor.js");
+/* harmony import */ var _lib_info__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./lib/info */ "./lib/info.js");
 
 
 
@@ -240,8 +296,8 @@ __webpack_require__.r(__webpack_exports__);
 window.updateMap = updateMap;
 let map = null;
 document.addEventListener('DOMContentLoaded', function(event) {
-  Object(_form__WEBPACK_IMPORTED_MODULE_3__["style"])();
-  Object(_create_map__WEBPACK_IMPORTED_MODULE_1__["createMap"])(Object(_extractor__WEBPACK_IMPORTED_MODULE_2__["getDataPoints"])());
+  Object(_lib_info__WEBPACK_IMPORTED_MODULE_3__["info"])();
+  Object(_lib_create_map__WEBPACK_IMPORTED_MODULE_1__["createMap"])(Object(_lib_extractor__WEBPACK_IMPORTED_MODULE_2__["getDataPoints"])());
 });
 
 function updateMap() {
@@ -257,7 +313,7 @@ function updateMap() {
   document.getElementById('e_date').setAttribute('min', `${s_date}`);
   document.getElementById('s_date').setAttribute('min', `${e_date}`);
 
-  Object(_create_map__WEBPACK_IMPORTED_MODULE_1__["createMap"])(Object(_extractor__WEBPACK_IMPORTED_MODULE_2__["getDataPoints"])({ filter, s_time, e_time, s_date, e_date }));
+  Object(_lib_create_map__WEBPACK_IMPORTED_MODULE_1__["createMap"])(Object(_lib_extractor__WEBPACK_IMPORTED_MODULE_2__["getDataPoints"])({ filter, s_time, e_time, s_date, e_date }));
 }
 
 
