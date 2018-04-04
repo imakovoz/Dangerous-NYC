@@ -12,11 +12,6 @@
     <script
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBiILc-LjSfgJoTbUQJ4Y3A9Ge6MjgFNYI&libraries=visualization">
     </script>
-    <script>
-  $( function() {
-    $( "#slider" ).slider();
-  } );
-  </script>
   </head>
   <body>
     <nav id="nav-wrapper">
@@ -29,12 +24,21 @@
     <form id="filter-form" onChange="updateMap()">
       <div id="form-container">
         <form>
-            <div>
-                <input type="text" class="sliderValue" data-index="0" value="10" />
-                <input type="text" class="sliderValue" data-index="1" value="90" />
+            <div id="time-wrapper">
+                <input type="text" class="sliderValue" data-index="0" value="00:01" />
+                <input type="text" class="sliderValue" data-index="1" value="24:00" />
+            </div>
+            <div id="slider-wrapper">
+              <div id="slider"></div>
             </div>
             <br />
-            <div id="slider"></div>
+            <div id="date-wrapper">
+                <input type="text" class="sliderValue1" data-index="0" value="3/1/2017" />
+                <input type="text" class="sliderValue1" data-index="1" value="3/1/2018" />
+            </div>
+            <div id="slider-wrapper">
+              <div id="slider1"></div>
+            </div>
         </form>
 
         <br />

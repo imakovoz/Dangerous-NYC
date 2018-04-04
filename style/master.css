@@ -91,7 +91,7 @@ nav {
 }
 
 #form-container {
-  margin-left: 20px;
+  margin: 0 20px;
 }
 
 #nav-wrapper {
@@ -165,4 +165,24 @@ nav {
 #exit {
   margin-left: calc(45vw - 125px);
   margin-bottom: 20px;
+}
+
+#slider {
+  width: 140px;
+}
+
+#time-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.sliderValue {
+  width: 25%;
+  text-align: center;
+}
+
+.sliderValue1 {
+  width: 40%;
+  text-align: center;
 }
