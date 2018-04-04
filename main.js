@@ -2,11 +2,13 @@ import * as d3 from 'd3';
 import { createMap, renderMap } from './lib/create_map';
 import { getDataPoints } from './lib/extractor';
 import { info } from './lib/info';
+import { slider } from './lib/slider';
 
 window.updateMap = updateMap;
 let map = null;
 document.addEventListener('DOMContentLoaded', function(event) {
   info();
+  slider();
   createMap(getDataPoints());
 });
 

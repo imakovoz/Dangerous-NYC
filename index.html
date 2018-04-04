@@ -7,10 +7,16 @@
     <meta charset="utf-8">
     <title>Dangerous NYC</title>
     <link rel="stylesheet" href="/style/reset.css">
+    <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/ui-lightness/jquery-ui.css">
     <link rel="stylesheet" href="/style/master.css">
     <script
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBiILc-LjSfgJoTbUQJ4Y3A9Ge6MjgFNYI&libraries=visualization">
     </script>
+    <script>
+  $( function() {
+    $( "#slider" ).slider();
+  } );
+  </script>
   </head>
   <body>
     <nav id="nav-wrapper">
@@ -22,24 +28,15 @@
     <div id="map"></div>
     <form id="filter-form" onChange="updateMap()">
       <div id="form-container">
-        <label>Filter data</label>
-        <br />
-        <br />
-        <label>Start Time</label>
-        <br />
-        <input type="time" value="00:00" id="s_time">
-        <br />
-        <label>End Time</label>
-        <br />
-        <input type="time" value="23:59" id="e_time">
-        <br />
-        <label>Start Date</label>
-        <br />
-        <input type="date" min="2017-03-01" max="2018-03-01" value="2017-03-01" id="s_date"></input>
-        <br />
-        <label>End Date</label>
-        <br />
-        <input type="date" min="2017-03-01" max="2018-03-01" value="2018-03-01" id="e_date"></input>
+        <form>
+            <div>
+                <input type="text" class="sliderValue" data-index="0" value="10" />
+                <input type="text" class="sliderValue" data-index="1" value="90" />
+            </div>
+            <br />
+            <div id="slider"></div>
+        </form>
+
         <br />
         <br />
         <label>Severity Filter</label>

@@ -275,6 +275,40 @@ const information = '<div id="info" />';
 
 /***/ }),
 
+/***/ "./lib/slider.js":
+/*!***********************!*\
+  !*** ./lib/slider.js ***!
+  \***********************/
+/*! exports provided: slider */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "slider", function() { return slider; });
+function slider() {
+  $(document).ready(function() {
+    $('#slider').slider({
+      min: 0,
+      max: 100,
+      step: 1,
+      values: [10, 90],
+      slide: function(event, ui) {
+        for (var i = 0; i < ui.values.length; ++i) {
+          $('input.sliderValue[data-index=' + i + ']').val(ui.values[i]);
+        }
+      },
+    });
+
+    $('input.sliderValue').change(function() {
+      var $this = $(this);
+      $('#slider').slider('values', $this.data('index'), $this.val());
+    });
+  });
+}
+
+
+/***/ }),
+
 /***/ "./main.js":
 /*!*****************!*\
   !*** ./main.js ***!
@@ -288,6 +322,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _lib_create_map__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./lib/create_map */ "./lib/create_map.js");
 /* harmony import */ var _lib_extractor__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./lib/extractor */ "./lib/extractor.js");
 /* harmony import */ var _lib_info__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./lib/info */ "./lib/info.js");
+/* harmony import */ var _lib_slider__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./lib/slider */ "./lib/slider.js");
+
 
 
 
@@ -297,6 +333,7 @@ window.updateMap = updateMap;
 let map = null;
 document.addEventListener('DOMContentLoaded', function(event) {
   Object(_lib_info__WEBPACK_IMPORTED_MODULE_3__["info"])();
+  Object(_lib_slider__WEBPACK_IMPORTED_MODULE_4__["slider"])();
   Object(_lib_create_map__WEBPACK_IMPORTED_MODULE_1__["createMap"])(Object(_lib_extractor__WEBPACK_IMPORTED_MODULE_2__["getDataPoints"])());
 });
 
