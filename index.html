@@ -3,7 +3,7 @@
   <head>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-
+    <link href="https://fonts.googleapis.com/css?family=Aladin|Eczar" rel="stylesheet">
     <meta charset="utf-8">
     <title>Dangerous NYC</title>
     <link rel="stylesheet" href="/style/reset.css">
@@ -21,20 +21,33 @@
       </div>
     </nav>
     <div id="map"></div>
-    <form id="filter-form" onChange="updateMap()">
+    <form id="filter-form" onChange="bufferLoad()">
+      <h3 id="filter-header">Filters</h3>
       <div id="form-container">
-        <form>
+        <form >
             <div id="time-wrapper">
-                <input type="text" class="sliderValue" data-index="0" value="00:01" />
-                <input type="text" class="sliderValue" data-index="1" value="24:00" />
+              <div class="input-wrapper">
+                <label>Start Time</label>
+                <input type="text" class="sliderValue" id="s_time" data-index="0" value="00:01" onChange="updateMap()"/>
+              </div>
+              <div class="input-wrapper">
+                <label>End Time</label>
+                <input type="text" class="sliderValue" id="e_time" data-index="1" value="24:00" onChange="updateMap()"/>
+              </div>
             </div>
             <div id="slider-wrapper">
               <div id="slider"></div>
             </div>
             <br />
             <div id="date-wrapper">
-                <input type="text" class="sliderValue1" data-index="0" value="3/1/2017" />
-                <input type="text" class="sliderValue1" data-index="1" value="3/1/2018" />
+              <div class="input-wrapper">
+                <label>Start Date</label>
+                <input type="text" class="sliderValue1" id="s_date" data-index="0" value="3/1/2017" onChange="updateMap()"/>
+              </div>
+              <div class="input-wrapper">
+                <label>End Date</label>
+                <input type="text" class="sliderValue1" id="e_date" data-index="1" value="3/1/2018" onChange="updateMap()" />
+              </div>
             </div>
             <div id="slider-wrapper">
               <div id="slider1"></div>
@@ -42,8 +55,7 @@
         </form>
 
         <br />
-        <br />
-        <label>Severity Filter</label>
+        <label id="sev-label">Severity Filter</label>
         <select name="filter" id="filter-input">
           <option value="all">All</option>
           <option value="ped">Pedestrian</option>

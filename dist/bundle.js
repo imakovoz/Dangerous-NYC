@@ -181,7 +181,7 @@ function severityScore(obj, filter) {
 function convertTime(time) {
   return time.split(':').reduce((total, el, i) => {
     if (i === 0) {
-      return total + el * 60;
+      return total + parseInt(el) * 60;
     } else {
       return total + parseInt(el);
     }
@@ -190,9 +190,9 @@ function convertTime(time) {
 
 function convertDate(date) {
   return date.split('/').reduce((total, el, i) => {
-    if (i === 0) {
+    if (i === 1) {
       return total + parseInt(el) * 31;
-    } else if (i === 1) {
+    } else if (i === 0) {
       return total + parseInt(el);
     } else {
       return total + parseInt(el) * 366;
@@ -220,7 +220,10 @@ function info() {
     $('#info').prepend(`<h1 id="info-header">Dangerous NYC</h1>`);
     $('#info').append(`<h3 id="info-header">By: Ilya Makovoz</h3>`);
     $('#info').append(
-      `<div id="info-desc">  The purpose of this app is to help visualize NYC crash data as made available by Open NYC. This app utilizes Google Maps API and the Heatmap visualization library they provide. This is primarily due to rendering constraints surrounding the 40,000+ datapoints used that prevent efficient rendering utilizing the canvas and D3 library.</div>`
+      `<div id="info-desc">  The purpose of this app is to help visualize NYC crash data as made available by Open NYC. This app utilizes Google Maps API and the Heatmap visualization library they provide. This is primarily due to rendering constraints surrounding the 40,000+ datapoints used that prevent efficient rendering utilizing the canvas and D3 library. To provide seamless control jquery sliders have been implemented allowing filtering of time and date. Data retrieval has a buffer loading of two seconds for a more seamless browsing experience.</div>`
+    );
+    $('#info').append(
+      `<div id="info-desc">Feel free to look at the data set at: https://data.cityofnewyork.us/Public-Safety/NYPD-Motor-Vehicle-Collisions/h9gi-nx95</div>`
     );
     $('#info').append(
       `<div id="info-desc">  To help determine the most relevant information a few filters have been provided:</div>`
@@ -292,13 +295,13 @@ function slider() {
       step: 1,
       values: [1, 1440],
       slide: function(event, ui) {
-        debugger;
         if (
           (ui.handleIndex === 1 && ui.values[1] < ui.values[0] + 1) ||
           (ui.handleIndex === 0 && ui.values[1] < ui.values[0] + 1)
         ) {
           return false;
         }
+        window.bufferLoad();
         for (var i = 0; i < ui.values.length; ++i) {
           $('input.sliderValue[data-index=' + i + ']').val(
             `${('0' + Math.floor(ui.values[i] / 60)).slice(-2)}:${(
@@ -326,6 +329,7 @@ function slider() {
         ) {
           return false;
         }
+        window.bufferLoad();
         for (var i = 0; i < ui.values.length; ++i) {
           const date = new Date(1488344401000 + ui.values[i] * 86399000);
           $('input.sliderValue1[data-index=' + i + ']').val(
@@ -376,12 +380,23 @@ __webpack_require__.r(__webpack_exports__);
 
 
 window.updateMap = updateMap;
+window.bufferLoad = bufferLoad;
+
 let map = null;
 document.addEventListener('DOMContentLoaded', function(event) {
   Object(_lib_info__WEBPACK_IMPORTED_MODULE_3__["info"])();
   Object(_lib_slider__WEBPACK_IMPORTED_MODULE_4__["slider"])();
   Object(_lib_create_map__WEBPACK_IMPORTED_MODULE_1__["createMap"])(Object(_lib_extractor__WEBPACK_IMPORTED_MODULE_2__["getDataPoints"])());
 });
+
+function bufferLoad() {
+  if (window.timer) {
+    clearTimeout(window.timer);
+    window.timer = setTimeout(updateMap, 2000);
+  } else {
+    window.timer = setTimeout(updateMap, 2000);
+  }
+}
 
 function updateMap() {
   var dateFormat = __webpack_require__(/*! dateformat */ "./node_modules/dateformat/lib/dateformat.js");
@@ -390,12 +405,7 @@ function updateMap() {
   var e_time = document.getElementById('e_time').value;
   var s_date = dateFormat(document.getElementById('s_date').value, 'm/d/yy');
   var e_date = dateFormat(document.getElementById('e_date').value, 'm/d/yy');
-
-  document.getElementById('s_time').setAttribute('max', `${e_time}`);
-  document.getElementById('e_time').setAttribute('min', `${s_time}`);
-  document.getElementById('e_date').setAttribute('min', `${s_date}`);
-  document.getElementById('s_date').setAttribute('min', `${e_date}`);
-
+  console.log({ filter, s_time, e_time, s_date, e_date });
   Object(_lib_create_map__WEBPACK_IMPORTED_MODULE_1__["createMap"])(Object(_lib_extractor__WEBPACK_IMPORTED_MODULE_2__["getDataPoints"])({ filter, s_time, e_time, s_date, e_date }));
 }
 

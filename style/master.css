@@ -11,6 +11,10 @@ nav {
   align-items: center;
 }
 
+h1 {
+  font-family: 'Eczar', serif;
+}
+
 #left-nav {
   display: flex;
   flex-direction: row;
@@ -19,7 +23,7 @@ nav {
 #left-nav h1:first-child {
   margin-left: 20px;
   font-size: 24px;
-  font-weight: 700;
+  font-weight: 300;
   color: #ba7821;
 }
 
@@ -60,8 +64,15 @@ nav {
   height: calc(100vh - 50px);
 }
 
+#filter-header {
+  text-align: center;
+  color: white;
+  font-size: 20px;
+  line-height: 30px;
+}
+
 #filter-form {
-  height: 300px;
+  height: 330px;
   width: 200px;
   background-color: rgb(19, 49, 96, 0.6);
   position: fixed;
@@ -76,7 +87,6 @@ nav {
 
 #filter-form label {
   color: white;
-  margin-left: 10px;
 }
 
 #filter-form input {
@@ -91,7 +101,16 @@ nav {
 }
 
 #form-container {
-  margin: 0 20px;
+  margin: 0 10px;
+}
+
+#form-container label {
+  font-size: 18px;
+  font-weight: 300;
+}
+
+#sev-label {
+  margin: 0;
 }
 
 #nav-wrapper {
@@ -120,6 +139,7 @@ nav {
   width: 90vw;
   background-color: rgb(196, 196, 196, 0.8);
   margin: 50px;
+  border-radius: 5px;
 }
 
 #info > h1 {
@@ -131,7 +151,7 @@ nav {
 
 #info > h3 {
   font-size: 18px;
-  margin-left: calc(50% - 80px);
+  margin-left: calc(50% - 70px);
   line-height: 24px;
 
   margin-bottom: 20px;
@@ -139,6 +159,7 @@ nav {
 
 #info-desc {
   margin: 10px 40px;
+  line-height: 20px;
 }
 
 #info-filters {
@@ -147,7 +168,7 @@ nav {
 
 #filter-desc {
   margin-left: 10px;
-  margin-top: 30px;
+  margin-top: 10px;
 }
 
 #info-contact {
@@ -171,18 +192,33 @@ nav {
   width: 140px;
 }
 
+#slider1 {
+  width: 140px;
+}
+
 #time-wrapper {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
 }
 
+#date-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
 .sliderValue {
-  width: 25%;
+  width: 90%;
   text-align: center;
 }
 
 .sliderValue1 {
-  width: 40%;
+  width: 90%;
   text-align: center;
+}
+
+.input-wrapper {
+  display: flex;
+  flex-direction: column;
 }
