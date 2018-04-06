@@ -220,10 +220,12 @@ function info() {
     $('#info').prepend(`<h1 id="info-header">Dangerous NYC</h1>`);
     $('#info').append(`<h3 id="info-header">By: Ilya Makovoz</h3>`);
     $('#info').append(
-      `<div id="info-desc">  The purpose of this app is to help visualize NYC crash data as made available by Open NYC. This app utilizes Google Maps API and the Heatmap visualization library they provide. This is primarily due to rendering constraints surrounding the 40,000+ datapoints used that prevent efficient rendering utilizing the canvas and D3 library. To provide seamless control jquery sliders have been implemented allowing filtering of time and date. Data retrieval has a buffer loading of two seconds for a more seamless browsing experience.</div>`
+      `<div id="info-text">  The purpose of this app is to help visualize NYC crash data as made available by Open NYC. This app utilizes Google Maps API and the Heatmap visualization library they provide. This is primarily due to rendering constraints surrounding the 40,000+ datapoints used that prevent efficient rendering utilizing the canvas and D3 library. To provide seamless control jquery sliders have been implemented allowing filtering of time and date. Data retrieval has a buffer loading of two seconds for a more seamless browsing experience.</div>`
     );
-    $('#info').append(
-      `<div id="info-desc">Feel free to look at the data set at: https://data.cityofnewyork.us/Public-Safety/NYPD-Motor-Vehicle-Collisions/h9gi-nx95</div>`
+    $('#info').append(`<div id="info-desc"></div>`);
+    $('#info-desc').append(`<div>Feel free to look at the data set at: </div>`);
+    $('#info-desc').append(
+      `<a href="https://data.cityofnewyork.us/Public-Safety/NYPD-Motor-Vehicle-Collisions/h9gi-nx95">https://data.cityofnewyork.us/Public-Safety/NYPD-Motor-Vehicle-Collisions/h9gi-nx95</a>`
     );
     $('#info').append(
       `<div id="info-desc">  To help determine the most relevant information a few filters have been provided:</div>`
@@ -385,6 +387,7 @@ window.bufferLoad = bufferLoad;
 let map = null;
 document.addEventListener('DOMContentLoaded', function(event) {
   Object(_lib_info__WEBPACK_IMPORTED_MODULE_3__["info"])();
+  $('#info-icon').click();
   Object(_lib_slider__WEBPACK_IMPORTED_MODULE_4__["slider"])();
   Object(_lib_create_map__WEBPACK_IMPORTED_MODULE_1__["createMap"])(Object(_lib_extractor__WEBPACK_IMPORTED_MODULE_2__["getDataPoints"])());
 });

@@ -10,6 +10,7 @@ window.bufferLoad = bufferLoad;
 let map = null;
 document.addEventListener('DOMContentLoaded', function(event) {
   info();
+  $('#info-icon').click();
   slider();
   createMap(getDataPoints());
 });

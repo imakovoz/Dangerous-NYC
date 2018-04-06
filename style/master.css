@@ -72,7 +72,7 @@ h1 {
 }
 
 #filter-form {
-  height: 330px;
+  height: 360px;
   width: 200px;
   background-color: rgb(19, 49, 96, 0.6);
   position: fixed;
@@ -162,6 +162,11 @@ h1 {
   line-height: 20px;
 }
 
+#info-text {
+  margin: 10px 40px;
+  line-height: 20px;
+}
+
 #info-filters {
   margin: 10px 40px 20px 40px;
 }
@@ -221,4 +226,58 @@ h1 {
 .input-wrapper {
   display: flex;
   flex-direction: column;
+}
+
+#slider {
+  margin-right: -20px;
+}
+
+#info-desc {
+  display: flex;
+  flex-direction: row;
+}
+
+#slider-wrapper span {
+  top: -10px;
+}
+
+.sliderValue {
+  padding: 5px 0;
+}
+
+.sliderValue1 {
+  padding: 5px 0;
+}
+
+.styled-select {
+  background: url(http://i62.tinypic.com/15xvbd5.png) no-repeat 96% 0;
+  height: 29px;
+  overflow: hidden;
+  border: 1px solid #8e8e8e;
+}
+
+.styled-select select {
+  border: none;
+  font-size: 14px;
+  height: 29px;
+  padding: 5px; /* If you add too much padding here, the options won't show in IE */
+}
+
+.styled-select.slate {
+  background: url(http://i62.tinypic.com/2e3ybe1.jpg) no-repeat right center;
+  height: 34px;
+  width: 240px;
+}
+
+#filter-input {
+  width: 160px;
+  background-color: white;
+  padding-left: 10px;
+}
+
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  text-indent: 1px;
+  text-overflow: '';
 }
