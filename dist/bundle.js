@@ -190,9 +190,9 @@ function convertTime(time) {
 
 function convertDate(date) {
   return date.split('/').reduce((total, el, i) => {
-    if (i === 1) {
+    if (i === 0) {
       return total + parseInt(el) * 31;
-    } else if (i === 0) {
+    } else if (i === 1) {
       return total + parseInt(el);
     } else {
       return total + parseInt(el) * 366;
@@ -241,7 +241,7 @@ function info() {
       `<li id="filter-desc">Start Date: lower bound for date of data displayed</li>`
     );
     $('#info-filters').append(
-      `<li id="filter-desc">End Time: higher bound for date of data displayed</li>`
+      `<li id="filter-desc">End Date: higher bound for date of data displayed</li>`
     );
     $('#info-filters').append(
       `<li id="filter-desc">Severity Filter: allows limiting of data to only calculate pedestrian, cyclist, and motorist injuries</li>`
@@ -260,7 +260,6 @@ function info() {
       `<a href="https://imakovoz.github.io/" target="_blank"><img src="https://cdn4.iconfinder.com/data/icons/rounded-white-basic-ui/139/Profile01-RoundedWhite-512.png" id="social-icon" /></a>`
     );
     $('#info-modal').click(() => {
-      console.log('test');
       $('#info-modal').remove();
     });
   });
@@ -408,7 +407,6 @@ function updateMap() {
   var e_time = document.getElementById('e_time').value;
   var s_date = dateFormat(document.getElementById('s_date').value, 'm/d/yy');
   var e_date = dateFormat(document.getElementById('e_date').value, 'm/d/yy');
-  console.log({ filter, s_time, e_time, s_date, e_date });
   Object(_lib_create_map__WEBPACK_IMPORTED_MODULE_1__["createMap"])(Object(_lib_extractor__WEBPACK_IMPORTED_MODULE_2__["getDataPoints"])({ filter, s_time, e_time, s_date, e_date }));
 }
 

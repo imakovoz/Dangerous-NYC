@@ -31,6 +31,5 @@ function updateMap() {
   var e_time = document.getElementById('e_time').value;
   var s_date = dateFormat(document.getElementById('s_date').value, 'm/d/yy');
   var e_date = dateFormat(document.getElementById('e_date').value, 'm/d/yy');
-  console.log({ filter, s_time, e_time, s_date, e_date });
   createMap(getDataPoints({ filter, s_time, e_time, s_date, e_date }));
 }

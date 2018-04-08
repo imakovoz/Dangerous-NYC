@@ -15,6 +15,11 @@ h1 {
   font-family: 'Eczar', serif;
 }
 
+h3 {
+  color: white;
+  font-weight: 300;
+}
+
 #left-nav {
   display: flex;
   flex-direction: row;
@@ -270,7 +275,7 @@ h1 {
 }
 
 #filter-input {
-  width: 160px;
+  width: 100%;
   background-color: white;
   padding-left: 10px;
 }
@@ -280,4 +285,8 @@ select {
   -moz-appearance: none;
   text-indent: 1px;
   text-overflow: '';
+}
+
+#info-header {
+  color: black;
 }
